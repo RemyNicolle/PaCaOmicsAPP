@@ -8,6 +8,7 @@ To launch the application, open R and type in these two lines:
 ```R
 library(shiny)
 runGitHub("PaCaOmicsAPP", "RemyNicolle")
+# this will take some time as all necessary data will be downloaded
 ```
 
 This will download the application along with the necessary data and launch it.
