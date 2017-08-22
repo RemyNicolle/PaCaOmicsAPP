@@ -1,6 +1,19 @@
 # PaCaOmicsAPP
 Application for the analysis and visualisation of PaCaOmics data.
 
+
+
+## Installing R and necessary packages
+- To install R for windows: [https://cran.r-project.org/bin/windows/base/](https://cran.r-project.org/bin/windows/base/)
+
+- To install R for Mac, download and run the latest _pkg_ :[https://cran.r-project.org/bin/macosx/](https://cran.r-project.org/bin/macosx/)
+
+Once installed, launch R and type the following commands in R to install the necessary packages to launch the application.
+```R
+install.packages(c("shiny","beeswarm"))
+```
+
+
 ## Launching the application
 This application requires to have R installed along with two packages (beeswarm and shiny). Installing instruction are shown at the end of this page if needed.
 
@@ -27,14 +40,3 @@ or launch __R__ in the same folder/directory and simply use the name of the down
 ```R
 runApp("RemyNicolle-PaCaOmicsAPP.tar.gz")
 ```
-
-### Installing R and necessary packages
-- To install R for windows: [https://cran.r-project.org/bin/windows/base/](https://cran.r-project.org/bin/windows/base/)
-
-- To install R for Mac, download and run the latest _pkg_ :[https://cran.r-project.org/bin/macosx/](https://cran.r-project.org/bin/macosx/)
-
-Once installed, launch R and type the following commands in R to install the necessary packages to launch the application.
-```R
-install.packages(c("shiny","beeswarm"))
-```
-
