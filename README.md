@@ -14,8 +14,9 @@ This will download the application along with the necessary data and launch it.
 
 
 ### Installing R and necessary packages
-To install R for windows: [https://cran.r-project.org/bin/windows/base/](https://cran.r-project.org/bin/windows/base/)
-To install R for Mac, download and run the latest _pkg_ :[https://cran.r-project.org/bin/macosx/](https://cran.r-project.org/bin/macosx/)
+- To install R for windows: [https://cran.r-project.org/bin/windows/base/](https://cran.r-project.org/bin/windows/base/)
+
+- To install R for Mac, download and run the latest _pkg_ :[https://cran.r-project.org/bin/macosx/](https://cran.r-project.org/bin/macosx/)
 
 Once installed, launch R and type the following commands in R to install the necessary packages to launch the application.
 ```R
