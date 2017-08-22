@@ -6,7 +6,7 @@ library(beeswarm)
 load("shinyData.RData")
 
 momcolors= c( basal="#ff7f00",classical="#377eb8",Outlier="#636363")
-tumostromcol=c(tumor="#89000B",stroma="#148D4F")
+tumostromcol=c(tumor="#148D4F",stroma="#89000B")
 
 
 #H2M<<-cit.load("/datacit/00_DATABANKS/HumanMouseHomologs/H2M.RData")
@@ -18,7 +18,7 @@ tumostromcol=c(tumor="#89000B",stroma="#148D4F")
 
 L=list(
 Tumor=list(diff=Hrnadiff,exp=Hrna,cl=fullclassif,col=momcolors,genecol="GeneName"),
-Stroma=list(diff=Mrnadiff,exp=Mrna,cl=fullclassif,col=momcolors,genecol="GeneName"),
+Stroma=list(diff=Mrnadiff,exp=Mrna,cl=fullclassif,col=momcolors,genecol="HumanHomolog_Symbol"),
 TumorVsStroma=list(diff=StromaTumDiff,exp=conorm,cl=humanmousefac,col=tumostromcol,genecol="HumanGene"))
 
 
@@ -36,7 +36,7 @@ genebyclass=function(gene,dataname){
         return(NULL)
 
     }
-    
+
     
     if(length(selectgeneEnsID)>1){
         selectgeneEnsID=rownames(DATA$diff)[which.min(DATA$diff[selectgeneEnsID,"logFC"])]
@@ -44,11 +44,13 @@ genebyclass=function(gene,dataname){
     }
   
   
+  
   if(dataname=="TumorVsStroma"){
   ylabel=paste("co-normalised expression",sep="")
   }else{
   ylabel=paste("Normalised log-count (",selectgeneEnsID,")",sep="")
   }
+  
   beeswarm(as.numeric(DATA$exp[selectgeneEnsID,names(DATA$cl)])~DATA$cl,
   bty="l",pch=16,
   xlab=NA,
