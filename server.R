@@ -5,14 +5,14 @@ library(beeswarm)
 #source("getExpGroupsFunction.R")
 load("shinyData.RData")
 
-momcolors= c( basal="#ff7f00",classical="#377eb8",Outlier="#636363")
+momcolors= c( basal="#ff7f00",classical="#377eb8")#,Outlier="#636363")
 tumostromcol=c(tumor="#148D4F",stroma="#89000B")
 
 #methdat,methdiff
 
 RNAseqAllDat=list(
-Tumor=list(diff=Hrnadiff,exp=Hrna,cl=fullclassif,col=momcolors,genecol="GeneName"),
-Stroma=list(diff=Mrnadiff,exp=Mrna,cl=fullclassif,col=momcolors,genecol="HumanHomolog_Symbol"),
+Tumor=list(diff=Hrnadiff,exp=Hrna,cl=noutlierclassif,col=momcolors,genecol="GeneName"),
+Stroma=list(diff=Mrnadiff,exp=Mrna,cl=noutlierclassif,col=momcolors,genecol="HumanHomolog_Symbol"),
 TumorVsStroma=list(diff=StromaTumDiff,exp=conorm,cl=humanmousefac,col=tumostromcol,genecol="HumanGene")
 )
 
@@ -69,10 +69,10 @@ RNAseqgeneplot=function(gene,dataname){
 
 
 selectCpG=function(gene,type,group){
-
-if(gene==""| gene ==" " | is.null(gene)){
- return(NULL)
-}else if(gene %in% methdiff[,"symbol"]){
+    
+    if(gene==""| gene ==" " | is.null(gene)){
+        return(NULL)
+    }else if(gene %in% methdiff[,"symbol"]){
         selectgeneCPGID=rownames(methdiff)[which(methdiff[,"symbol"]==gene)]
     }else if(tolower(gene) %in% rownames(methdiff)){
         return(tolower(gene))
@@ -97,7 +97,7 @@ if(gene==""| gene ==" " | is.null(gene)){
     if(length(selectgeneCPGID)==0){
         return(NULL)
     }else if(length(selectgeneCPGID)==1){
-            return(length(selectgeneCPGID)==0)
+            return(selectgeneCPGID)
     }else{
         return(selectgeneCPGID[order(methdiff[selectgeneCPGID,"adj.P.Val"])])
     }
@@ -119,19 +119,19 @@ Methgeneplot=function(cpgs,gene,type,group){
         
     }
     
-        beeswarm(as.numeric(methdat[cpgs[1],names(fullclassif)])~fullclassif,
+        beeswarm(as.numeric(methdat[cpgs[1],names(noutlierclassif)])~noutlierclassif,
     bty="l",pch=16,
     xlab=NA,
     ylab=paste("Methylation Beta-value (",cpgs[1],")"),
     main=paste(gene,"(",type,",",group,")"))
     
     
-    boxplot(as.numeric(methdat[cpgs[1],names(fullclassif)])~fullclassif,
+    boxplot(as.numeric(methdat[cpgs[1],names(noutlierclassif)])~noutlierclassif,
     add=T,axes=F,outline=F,
     col=momcolors,
     sub=paste( "Basal versus classical FDR:",signif(methdiff[cpgs[1],"adj.P.Val"],3)))
     
-    beeswarm(as.numeric(methdat[cpgs[1],names(fullclassif)])~fullclassif,
+    beeswarm(as.numeric(methdat[cpgs[1],names(noutlierclassif)])~noutlierclassif,
     pch=16,
     add=T,axes=F,
     xlab=NA,
