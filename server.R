@@ -46,6 +46,12 @@ RNAseqgeneplot=function(gene,dataname){
   ylabel=paste("Normalised log-count (",selectgeneEnsID,")",sep="")
   }
   
+  if(dataname=="TumorVsStroma"){
+      difflabel="tumor versus stroma"
+  }else{
+      difflabel="basal versus classical"
+  }
+  
   beeswarm(as.numeric(DATA$exp[selectgeneEnsID,names(DATA$cl)])~DATA$cl,
   bty="l",pch=16,
   xlab=NA,
@@ -55,7 +61,7 @@ RNAseqgeneplot=function(gene,dataname){
   
   boxplot(as.numeric(DATA$exp[selectgeneEnsID,names(DATA$cl)])~DATA$cl,add=T,axes=F,outline=F,
   col=DATA$col,
-  sub=paste("Basal versus classical log fold-change:",signif(DATA$diff[selectgeneEnsID,"logFC"],3),
+  sub=paste(difflabel,"log fold-change:",signif(DATA$diff[selectgeneEnsID,"logFC"],3),
   "\nFDR:",signif(DATA$diff[selectgeneEnsID,"adj.P.Val"],3)))
   
   beeswarm(as.numeric(DATA$exp[selectgeneEnsID,names(DATA$cl)])~DATA$cl,
