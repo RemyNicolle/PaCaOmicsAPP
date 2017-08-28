@@ -2,6 +2,7 @@ library(shiny)
 library(beeswarm)
 
 
+
 #source("getExpGroupsFunction.R")
 load("shinyData.RData")
 
@@ -177,5 +178,15 @@ shinyServer(function(input, output) {
         df=data.frame(CpG=rownames(df),df)
         df
     })
+    
+    
+    output$muttable <-  DT::renderDataTable({
+    
+    mutgene=toupper(input$mutgene)
+    df=MUT[which(MUT$Gene.refGene  ==mutgene),c("ExonicFunc.refGene","Chr","Start","End","Ref",
+    "Alt","Sample_Name")]
+    if(nrow(df)>0){df$Classification=fullclassif[df$Sample_Name]}
+    df=data.frame(df,  AAchange=MUT[which(MUT$Gene.refGene  ==mutgene), "AAChange.refGene"])
+    },rownames=FALSE)
 
 })

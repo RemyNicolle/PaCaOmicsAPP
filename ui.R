@@ -29,9 +29,6 @@ plotOutput("rnaseq_plot")
 
 
 
-
-
-
 tabPanel("Methylation",
 sidebarLayout(
 
@@ -57,7 +54,31 @@ mainPanel(
 plotOutput("methylation_plot")
 )
 
-)))
+)),
+
+
+
+
+tabPanel("Mutations",
+fluidPage(
+
+
+#sidebarPanel(
+textInput(inputId="mutgene",
+value="KRAS",
+label="Enter gene symbol"
+),
+#),
+
+
+
+#mainPanel(
+DT::dataTableOutput("muttable",height=30)
+#)
+))
+
+
+)
 
 
 
