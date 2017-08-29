@@ -38,5 +38,5 @@ runApp("/home/file/path/toDownloaded/gz/app")
 ```
 or launch __R__ in the same folder/directory and simply use the name of the downloaded file:
 ```R
-runApp("RemyNicolle-PaCaOmicsAPP.tar.gz")
+runApp("PaCaOmicsAPP.tar.gz")
 ```
