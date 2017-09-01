@@ -10,7 +10,7 @@ Application for the analysis and visualisation of PaCaOmics data.
 
 Once installed, launch R and type the following commands in R to install the necessary packages to launch the application.
 ```R
-install.packages(c("shiny","beeswarm"))
+install.packages(c("shiny","beeswarm","DT"))
 ```
 
 
