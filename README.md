@@ -1,6 +1,10 @@
 # PaCaOmicsAPP
 Application for the analysis and visualisation of PaCaOmics data.
 
+The app runs online at this adresse: http://cit.ligue-cancer.net:3838/apps/pdac.pacaomics/
+
+
+Alternatively, the app can be used locally by following these steps:
 
 
 ## Installing R and necessary packages
